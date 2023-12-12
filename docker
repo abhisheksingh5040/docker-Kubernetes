@@ -1,3 +1,34 @@
 =====================================================
 			Docker
 =====================================================
+
+---------------------------------------------------
+#  Virtualization 
+---------------------------------------------------
+   -> Hypervisor.
+   
+   ----------------
+   # Advantages
+   ----------------
+   -> Multiple OS in the same machine.
+   -> Easy Maintenance & Recovery 
+   -> Lower Total cost of ownership.
+   
+   ----------------
+   # Disadvantages
+   ----------------
+   -> Multiple VMs Lead to unstable performance.
+   -> Hypervisors are not as efficient as host os.
+   -> Long boot-up process(Approx. 1 min)
+   
+---------------------------------------------------
+#  Containerization 
+---------------------------------------------------
+      
+   ----------------
+   # Advantages
+   ----------------
+   -> Containers OS same OS Kernel are lighter & smaller.
+   -> Better Resource Utilization comapred to VMs.
+   -> Short Boot-Up Process(1/20th of a second)
+  
