@@ -31,4 +31,51 @@
    -> Containers OS same OS Kernel are lighter & smaller.
    -> Better Resource Utilization comapred to VMs.
    -> Short Boot-Up Process(1/20th of a second)
-  
+   
+   
+-----------------------------------------------------
+# Docker Commands
+-----------------------------------------------------
+ -> docker info
+ -> docker images
+ -> docker rmi <image id>
+ -> docker rm <image> 
+ -> docker pull <image> 
+ -> docker run <image>
+ -> docker ps
+ -> docekr ps -a
+ 
+
+-------------------------------------------------------
+# Docker Terminology
+-------------------------------------------------------
+
+1) Docker file 
+   -> Intrstruction to create an image. It contains Docker Domain keywords to build image
+   
+2) Docker Image
+   -> Docker Image is a package which contains everything (app code + softwares + env + libararies)
+   
+3) Docker Conatiner
+   -> Run time instance of docker Image
+   
+4) Docker Registry
+   -> It is a place to store a docker images. (public [Docker hub] / private[Nexus, JFrog, AWS ECR,D.T.R])
+   
+5) Docker Engine
+   -> It is a software which will create docker images and Docker container.
+   
+   
+----------------------------------------------------------
+# Docker file command
+----------------------------------------------------------
+
+==> docker build -t myfirstimg .
+==> docker tag myfirstimg username/myfirstimg
+==> docker push username/myfirstimg
+
+---------------------------------------------------------
+
+
+
+
