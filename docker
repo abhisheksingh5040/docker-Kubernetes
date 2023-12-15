@@ -103,15 +103,103 @@
  -> Syntax : ADD <source> <destination>
              ADD <url-to-download> <destination>
       
- RUN 
- CMD
- ENTRYPOINT
- ENV
- LABEL
- USER
- WORKDIR
- EXPOSE
- VOLUME
+ RUN :
+ -> RUN command is used to execute commands on top of base image.
+ -> RUN command instruction will execute while creating an image.
+ -> We can write multiple RUN instruction, they will execute in order(from top to bottom)
+ 
+ Example:
+  RUN mkdir workspace.
+  RUN yum install git.
+  
+  FROM UBUNTU
+  Docker file              ----build-->            docker Image         ---run--->           docker container
+                            download git                              start tomcat-server 
+                             (RUN)                                          (CMD)
+                         while creating image                         while creating container
+            
+ 
+ CMD : 
+ -> CMD is also used to execute commands.
+ -> CMD instructions will execute while creating container.
+ -> we can write multiple CMD instructions in dockerfile but docker will process only last CMD instruction.
+ NOTE: there is no use of writing multiple CMD command.
+ 
+ Example:
+ CMD sudo start tomcat
+ 
+ -----------------------------------
+ # Sample Docker file
+ -----------------------------------
+ 
+ FROM ubuntu
+ MAINTAINER Abhishek Singh
+ RUN echo "Run One"
+ RUN echo "Run Two"
+ CMD echo "CMD One"
+ CMD echo "CMD Two"
+ RUN echo "Run Three"
+ 
+ -----------------------------------
+ -> We can override using runtime CMD.
+ -> It will print only date 
+
+    docker run imageOne date
+ ------------------------------------
+ # We can change docker file name
+  mv DockerFile DockerFile_One
+ 
+ # Creating Docker image using Dockerfile_One
+   docker build -f DockerFile_One -t imagetwo .
+ 
+ ENTRYPOINT :
+ -> It is used to execute while creating container.
+ NOTE : CMD instructions we can override as ENTRYPOINT instruction we can't override.
+ 
+ Example:
+ ENTRYPOINT["echo","Welcome"]
+ 
+ WORKDIR:
+ -> It is used to set Working Directory for an image/container.
+ Ex: WORKDIR <DIR-PATH>
+ NOTE : The Docker file instruction which are available after WORKDIR those instructions will be process from given working directory.
+ 
+ ENV :
+ -> It is used to set ENV variables.
+ Ex: ENV <key><value>
+ 
+ LABEL :
+ -> LABEL will represent data in key value pair.
+ -> It is used to add meta data for our image.
+ 
+ Ex : LABEL branchName release
+ 
+ ARG:
+ -> It is used to avoid hard coded values in docker file.
+ 
+ Ex:
+ ARG branch=develop
+ LABEL branch $branch
+ 
+ $ docker build -t imageOne --build-arg branch=feature
+ 
+ USER :
+ -> We can set USER for an image/container.
+ NOTE : After USER instruction, remaining instruction will be processed with given USER.
+ 
+ EXPOSE :
+ -> It represents on which port number our conatiner is running.
+ -> It is just like  a documention to understand.
+ 
+ VOLUME :
+ -> It is used for data storage.
+ 
+ +++++++++++++++++++++++++++++++++++++++
+ -> docker run -d -p 8080:8080 sb-rest-app
+ -> -d :  for detached means after execution we can run any command.
+ -> -p : port 
+ -> first 8080: host port
+ -> second 808 : docker port
  
   
 
